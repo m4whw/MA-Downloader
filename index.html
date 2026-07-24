@@ -134,10 +134,7 @@
   footer a{color:var(--gold-light)}
   footer .foot-links{display:flex; gap:18px; justify-content:center; margin-bottom:12px; flex-wrap:wrap}
 
-  [data-en]{display:none}
-  body.lang-en [data-ar]{display:none}
-  body.lang-en [data-en]{display:inline}
-  body.lang-en [data-en-block]{display:block}
+
 </style>
 </head>
 <body>
@@ -331,11 +328,21 @@
 </footer>
 
 <script>
+  var currentLang = 'ar';
+  var translatable = document.querySelectorAll('[data-ar][data-en]');
+
+  function applyLang(lang){
+    translatable.forEach(function(el){
+      el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+    });
+  }
+
   function toggleLang(){
     const body = document.body;
     const btn = document.getElementById('langToggle');
-    const isEn = body.classList.toggle('lang-en');
-    if(isEn){
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    applyLang(currentLang);
+    if(currentLang === 'en'){
       document.documentElement.setAttribute('lang','en');
       document.documentElement.setAttribute('dir','ltr');
       body.classList.add('ltr');
