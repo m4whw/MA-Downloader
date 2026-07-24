@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA Downloader — تنزيل فيديو وصوت من YouTube مجاناً | تطبيق ويندوز</title>
+<meta name="description" content="MA Downloader تطبيق مجاني لسطح مكتب ويندوز لتنزيل الفيديو والصوت من يوتيوب بجودات متعددة، بواجهة عربية وإنجليزية، بدون تثبيت أي أدوات إضافية.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://m4whw.github.io/MA-Downloader/">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MA Downloader — تنزيل فيديو وصوت من YouTube مجاناً">
+<meta property="og:description" content="تطبيق مجاني لسطح مكتب ويندوز لتنزيل الفيديو والصوت من يوتيوب بجودات متعددة، بواجهة عربية وإنجليزية.">
+<meta property="og:image" content="https://m4whw.github.io/MA-Downloader/og-image.png">
+<meta property="og:url" content="https://m4whw.github.io/MA-Downloader/">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="MA Downloader">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MA Downloader — تنزيل فيديو وصوت من YouTube مجاناً">
+<meta name="twitter:description" content="تطبيق مجاني لسطح مكتب ويندوز لتنزيل الفيديو والصوت من يوتيوب بجودات متعددة، بواجهة عربية وإنجليزية.">
+<meta name="twitter:image" content="https://m4whw.github.io/MA-Downloader/og-image.png">
+
+<style>
+  :root{
+    --bg:#0c0c0e; --bg-alt:#131316; --card:#19191d; --border:#26262b;
+    --gold:#c9a227; --gold-light:#e8c86a; --text:#f2f1ee; --muted:#9a9a9f;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"Segoe UI","Tahoma","Cairo",system-ui,-apple-system,Arial,sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  [dir="ltr"] body, body.ltr{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  .container{max-width:1080px; margin:0 auto; padding:0 24px}
+  header{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+    background:rgba(12,12,14,.85); border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.15rem}
+  .brand img{width:34px; height:34px}
+  .nav-actions{display:flex; align-items:center; gap:10px}
+  .lang-btn{
+    border:1px solid var(--border); background:var(--card); color:var(--text);
+    padding:8px 14px; border-radius:8px; font-size:.85rem; cursor:pointer;
+  }
+  .lang-btn:hover{border-color:var(--gold)}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; justify-content:center;
+    padding:12px 24px; border-radius:10px; font-weight:700; font-size:.95rem;
+    border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#141208}
+  .btn-primary:hover{filter:brightness(1.08)}
+  .btn-outline{border-color:var(--border); background:transparent; color:var(--text)}
+  .btn-outline:hover{border-color:var(--gold)}
+  .btn-sm{padding:9px 16px; font-size:.85rem}
+
+  .hero{padding:76px 0 56px; text-align:center; position:relative; overflow:hidden}
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto -10%; height:520px;
+    background:radial-gradient(closest-side, rgba(201,162,39,.16), transparent 70%);
+    z-index:0;
+  }
+  .hero-inner{position:relative; z-index:1}
+  .hero img.logo{width:104px; height:104px; margin:0 auto 22px}
+  .hero h1{font-size:2.3rem; font-weight:800; margin-bottom:14px; letter-spacing:.2px}
+  .hero p.lead{color:var(--muted); font-size:1.08rem; max-width:640px; margin:0 auto 30px}
+  .badges{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:30px}
+  .badge{
+    border:1px solid var(--border); background:var(--card); color:var(--muted);
+    padding:6px 14px; border-radius:999px; font-size:.8rem;
+  }
+  .hero-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .hero-note{margin-top:16px; font-size:.82rem; color:var(--muted)}
+
+  section{padding:64px 0; border-top:1px solid var(--border)}
+  h2.section-title{font-size:1.6rem; font-weight:800; margin-bottom:10px; text-align:center}
+  p.section-sub{color:var(--muted); text-align:center; max-width:600px; margin:0 auto 40px}
+
+  .features{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+  .feature-card{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; transition:border-color .15s, transform .15s;
+  }
+  .feature-card:hover{border-color:var(--gold); transform:translateY(-2px)}
+  .feature-icon{
+    width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:rgba(201,162,39,.12); color:var(--gold-light); font-size:1.3rem; margin-bottom:14px;
+  }
+  .feature-card h3{font-size:1.02rem; margin-bottom:8px}
+  .feature-card p{color:var(--muted); font-size:.9rem}
+
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; counter-reset:step}
+  .step{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; position:relative}
+  .step-num{
+    width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    color:#141208; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:14px; font-size:.9rem;
+  }
+  .step h3{font-size:.98rem; margin-bottom:6px}
+  .step p{color:var(--muted); font-size:.88rem}
+
+  .download-card{
+    background:linear-gradient(160deg,var(--card),var(--bg-alt)); border:1px solid var(--border);
+    border-radius:var(--radius); padding:40px; text-align:center;
+  }
+  .download-card h2{font-size:1.5rem; margin-bottom:8px}
+  .download-card p{color:var(--muted); margin-bottom:24px}
+  .req-list{
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:26px;
+    color:var(--muted); font-size:.82rem;
+  }
+  .req-list span{border:1px solid var(--border); border-radius:8px; padding:6px 12px}
+
+  .disclaimer{
+    background:var(--card); border:1px solid var(--border); border-right:4px solid var(--gold);
+    border-radius:var(--radius); padding:26px 28px; font-size:.9rem; color:var(--muted);
+  }
+  [dir="ltr"] .disclaimer{border-right:1px solid var(--border); border-left:4px solid var(--gold)}
+  .disclaimer h2{color:var(--text); font-size:1.15rem; margin-bottom:14px}
+  .disclaimer ul{padding-inline-start:20px; display:flex; flex-direction:column; gap:8px}
+
+  footer{border-top:1px solid var(--border); padding:32px 0; text-align:center; color:var(--muted); font-size:.85rem}
+  footer a{color:var(--gold-light)}
+  footer .foot-links{display:flex; gap:18px; justify-content:center; margin-bottom:12px; flex-wrap:wrap}
+
+  [data-en]{display:none}
+  body.lang-en [data-ar]{display:none}
+  body.lang-en [data-en]{display:inline}
+  body.lang-en [data-en-block]{display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="logo.png" alt="MA Downloader logo">
+      <span>MA Downloader</span>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">English</button>
+      <a class="btn btn-primary btn-sm" href="#download" data-ar="تحميل" data-en="Download">تحميل</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <img class="logo" src="logo.png" alt="شعار MA Downloader">
+      <h1 data-ar="MA Downloader" data-en="MA Downloader">MA Downloader</h1>
+      <p class="lead" data-ar="تطبيق مجاني لسطح مكتب ويندوز لتنزيل الفيديو والصوت من يوتيوب بجودات متعددة، بواجهة سهلة تدعم العربية والإنجليزية بالكامل."
+                        data-en="A free Windows desktop app for downloading video and audio from YouTube in multiple qualities, with a clean interface fully supporting Arabic and English.">
+        تطبيق مجاني لسطح مكتب ويندوز لتنزيل الفيديو والصوت من يوتيوب بجودات متعددة، بواجهة سهلة تدعم العربية والإنجليزية بالكامل.
+      </p>
+      <div class="badges">
+        <span class="badge" data-ar="مجاني بالكامل" data-en="100% Free">مجاني بالكامل</span>
+        <span class="badge" data-ar="Windows 10 / 11" data-en="Windows 10 / 11">Windows 10 / 11</span>
+        <span class="badge" data-ar="عربي / English" data-en="Arabic / English">عربي / English</span>
+        <span class="badge" data-ar="الإصدار v0.1.0" data-en="Version v0.1.0">الإصدار v0.1.0</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="heroDownload" href="https://github.com/m4whw/MA-Downloader/releases/download/v0.1.0/MA-Downloader-Setup-v0.1.0.exe">
+          <span data-ar="⬇ تحميل مباشر (EXE)" data-en="⬇ Direct Download (EXE)">⬇ تحميل مباشر (EXE)</span>
+        </a>
+        <a class="btn btn-outline" href="https://github.com/m4whw/MA-Downloader" target="_blank" rel="noopener">
+          <span data-ar="صفحة المستودع" data-en="Repository Page">صفحة المستودع</span>
+        </a>
+      </div>
+      <p class="hero-note" data-ar="ملف تنفيذي واحد (Installer) — لا حاجة لتثبيت أي برامج إضافية."
+                            data-en="Single installer file — no extra software required.">
+        ملف تنفيذي واحد (Installer) — لا حاجة لتثبيت أي برامج إضافية.
+      </p>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title" data-ar="المميزات" data-en="Features">المميزات</h2>
+      <p class="section-sub" data-ar="كل ما تحتاجه لتنزيل الفيديو والصوت بسهولة وسرعة، في تطبيق واحد خفيف."
+                              data-en="Everything you need to download video and audio easily and quickly, in one lightweight app.">
+        كل ما تحتاجه لتنزيل الفيديو والصوت بسهولة وسرعة، في تطبيق واحد خفيف.
+      </p>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h3 data-ar="جودات متعددة" data-en="Multiple Qualities">جودات متعددة</h3>
+          <p data-ar="اختر جودة الفيديو التي تناسبك، أو استخرج الصوت فقط بصيغة عالية الجودة." data-en="Choose the video quality you want, or extract audio-only in high quality.">
+            اختر جودة الفيديو التي تناسبك، أو استخرج الصوت فقط بصيغة عالية الجودة.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏯</div>
+          <h3 data-ar="تحكّم كامل بالتنزيل" data-en="Full Download Control">تحكّم كامل بالتنزيل</h3>
+          <p data-ar="إيقاف مؤقت، استئناف، أو إلغاء أي عملية تنزيل في أي لحظة." data-en="Pause, resume, or cancel any download at any moment.">
+            إيقاف مؤقت، استئناف، أو إلغاء أي عملية تنزيل في أي لحظة.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 data-ar="تتبّع التقدّم لحظياً" data-en="Live Progress Tracking">تتبّع التقدّم لحظياً</h3>
+          <p data-ar="نسبة الإنجاز، السرعة، والوقت المتبقي، معروضة بشكل واضح أثناء التنزيل." data-en="Progress percentage, speed, and time remaining shown clearly during download.">
+            نسبة الإنجاز، السرعة، والوقت المتبقي، معروضة بشكل واضح أثناء التنزيل.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3 data-ar="واجهة عربية / إنجليزية" data-en="Arabic / English UI">واجهة عربية / إنجليزية</h3>
+          <p data-ar="دعم كامل للغة العربية (بترتيب من اليمين لليسار) والإنجليزية." data-en="Full support for Arabic (RTL) and English interfaces.">
+            دعم كامل للغة العربية (بترتيب من اليمين لليسار) والإنجليزية.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂</div>
+          <h3 data-ar="سجل التنزيلات" data-en="Download History">سجل التنزيلات</h3>
+          <p data-ar="راجع كل عمليات التنزيل السابقة والإعدادات المستخدمة بسهولة." data-en="Review all past downloads and settings used, easily.">
+            راجع كل عمليات التنزيل السابقة والإعدادات المستخدمة بسهولة.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 data-ar="خصوصية وأمان" data-en="Privacy & Security">خصوصية وأمان</h3>
+          <p data-ar="يعمل التطبيق محلياً على جهازك بالكامل، بدون جمع أي بيانات شخصية." data-en="Runs entirely locally on your device — no personal data is collected.">
+            يعمل التطبيق محلياً على جهازك بالكامل، بدون جمع أي بيانات شخصية.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2 class="section-title" data-ar="طريقة الاستخدام" data-en="How It Works">طريقة الاستخدام</h2>
+      <p class="section-sub" data-ar="ثلاث خطوات بسيطة وأنت جاهز." data-en="Three simple steps and you're ready.">
+        ثلاث خطوات بسيطة وأنت جاهز.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3 data-ar="ثبّت التطبيق" data-en="Install the app">ثبّت التطبيق</h3>
+          <p data-ar="نزّل الملف التنفيذي وشغّله — تثبيت بنقرات قليلة." data-en="Download the installer and run it — a few clicks to install.">
+            نزّل الملف التنفيذي وشغّله — تثبيت بنقرات قليلة.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3 data-ar="الصق الرابط" data-en="Paste the link">الصق الرابط</h3>
+          <p data-ar="انسخ رابط الفيديو من يوتيوب والصقه داخل التطبيق." data-en="Copy the YouTube video link and paste it into the app.">
+            انسخ رابط الفيديو من يوتيوب والصقه داخل التطبيق.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3 data-ar="اختر الجودة ونزّل" data-en="Choose quality & download">اختر الجودة ونزّل</h3>
+          <p data-ar="حدد الجودة المطلوبة (فيديو أو صوت) واضغط تنزيل." data-en="Select the quality you want (video or audio) and hit download.">
+            حدد الجودة المطلوبة (فيديو أو صوت) واضغط تنزيل.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="container">
+      <div class="download-card">
+        <h2 data-ar="نزّل MA Downloader الآن" data-en="Download MA Downloader Now">نزّل MA Downloader الآن</h2>
+        <p data-ar="الإصدار الحالي v0.1.0 — مجاني بالكامل، بدون اشتراكات أو رسوم." data-en="Current version v0.1.0 — completely free, no subscriptions or fees.">
+          الإصدار الحالي v0.1.0 — مجاني بالكامل، بدون اشتراكات أو رسوم.
+        </p>
+        <a class="btn btn-primary" href="https://github.com/m4whw/MA-Downloader/releases/download/v0.1.0/MA-Downloader-Setup-v0.1.0.exe">
+          <span data-ar="⬇ تحميل مباشر (EXE)" data-en="⬇ Direct Download (EXE)">⬇ تحميل مباشر (EXE)</span>
+        </a>
+        <div class="req-list">
+          <span data-ar="Windows 10 / 11 — 64-bit" data-en="Windows 10 / 11 — 64-bit">Windows 10 / 11 — 64-bit</span>
+          <span data-ar="حجم الملف: ~45 ميجابايت" data-en="File size: ~45 MB">حجم الملف: ~45 ميجابايت</span>
+          <span data-ar="لا يتطلب تثبيت أدوات إضافية" data-en="No extra tools required">لا يتطلب تثبيت أدوات إضافية</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="disclaimer">
+    <div class="container">
+      <div class="disclaimer">
+        <h2 data-ar="إخلاء المسؤولية" data-en="Disclaimer">إخلاء المسؤولية</h2>
+        <ul>
+          <li data-ar="هذا التطبيق مخصص لتنزيل المحتوى الذي يملكه المستخدم، أو المحتوى المرخّص له باستخدامه، أو المحتوى العام (Public Domain) فقط."
+              data-en="This application is intended only for downloading content you own, content you are licensed to use, or public-domain content.">
+            هذا التطبيق مخصص لتنزيل المحتوى الذي يملكه المستخدم، أو المحتوى المرخّص له باستخدامه، أو المحتوى العام (Public Domain) فقط.
+          </li>
+          <li data-ar="المستخدم وحده هو المسؤول الكامل عن التزامه بحقوق النشر وشروط استخدام أي منصة يتم التنزيل منها."
+              data-en="The user is solely and fully responsible for complying with copyright law and the terms of service of any platform they download from.">
+            المستخدم وحده هو المسؤول الكامل عن التزامه بحقوق النشر وشروط استخدام أي منصة يتم التنزيل منها.
+          </li>
+          <li data-ar="لا يتحمّل المطوّر أي مسؤولية عن أي سوء استخدام للتطبيق من قبل المستخدمين."
+              data-en="The developer bears no responsibility for any misuse of the application by its users.">
+            لا يتحمّل المطوّر أي مسؤولية عن أي سوء استخدام للتطبيق من قبل المستخدمين.
+          </li>
+          <li data-ar="يُقدَّم التطبيق كما هو (As-Is) بدون أي ضمانات، ويُستخدم على مسؤولية المستخدم الخاصة."
+              data-en="The application is provided as-is, without any warranties, and is used at the user's own risk.">
+            يُقدَّم التطبيق كما هو (As-Is) بدون أي ضمانات، ويُستخدم على مسؤولية المستخدم الخاصة.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-links">
+      <a href="https://github.com/m4whw/MA-Downloader" target="_blank" rel="noopener" data-ar="المستودع" data-en="Repository">المستودع</a>
+      <a href="https://github.com/m4whw/MA-Downloader/releases" target="_blank" rel="noopener" data-ar="كل الإصدارات" data-en="All Releases">كل الإصدارات</a>
+      <a href="#disclaimer" data-ar="إخلاء المسؤولية" data-en="Disclaimer">إخلاء المسؤولية</a>
+    </div>
+    <p data-ar="© 2026 MA Downloader — جميع الحقوق محفوظة." data-en="© 2026 MA Downloader — All rights reserved.">
+      © 2026 MA Downloader — جميع الحقوق محفوظة.
+    </p>
+  </div>
+</footer>
+
+<script>
+  function toggleLang(){
+    const body = document.body;
+    const btn = document.getElementById('langToggle');
+    const isEn = body.classList.toggle('lang-en');
+    if(isEn){
+      document.documentElement.setAttribute('lang','en');
+      document.documentElement.setAttribute('dir','ltr');
+      body.classList.add('ltr');
+      btn.textContent = 'العربية';
+    } else {
+      document.documentElement.setAttribute('lang','ar');
+      document.documentElement.setAttribute('dir','rtl');
+      body.classList.remove('ltr');
+      btn.textContent = 'English';
+    }
+  }
+</script>
+</body>
+</html>
