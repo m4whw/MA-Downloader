@@ -14,6 +14,14 @@ A free Windows desktop app for downloading video and audio from YouTube. Arabic 
 
 **Direct download (EXE):** https://github.com/m4whw/MA-Downloader/releases/latest
 
+## Official site
+
+Full documentation: https://mohamed-abdelaziz.com/en/learning/tools/ma-downloader
+
+Arabic page: https://mohamed-abdelaziz.com/ar/learning/tools/ma-downloader
+
+More free trading tools: https://mohamed-abdelaziz.com/ar/learning/tools
+
 ---
 
 ⚠️ For personal, licensed, or public-domain content only. Users are solely responsible for complying with copyright and platform terms of use.
